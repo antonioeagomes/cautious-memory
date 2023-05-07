@@ -1,4 +1,5 @@
 using System.Reflection;
+using Api.Extensions;
 using Infra.IoC;
 using Microsoft.EntityFrameworkCore;
 using Transfer.Data.Context;
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<TransferDbContext>(options => {
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 builder.Services.RegisterServices();
+
+builder.Services.RegisterEventBus();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
