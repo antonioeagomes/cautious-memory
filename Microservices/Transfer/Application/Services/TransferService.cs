@@ -15,6 +15,11 @@ namespace Transfer.Application.Services;
             _bus = bus;
         }
 
+    public async Task Add(Domain.Models.Transfer transfer)
+    {
+        await _transferRepository.Add(transfer);
+    }
+
     public async Task<IEnumerable<Domain.Models.Transfer>> GetAll()
     {
         return await _transferRepository.GetAll();

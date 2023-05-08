@@ -5,6 +5,8 @@ namespace TransferApplication.Interfaces;
 
 public interface ITransferService
 {
-    Task<IEnumerable<Transfer.Domain.Models.Transfer>> GetAll();
+    public Task<IEnumerable<Transfer.Domain.Models.Transfer>> GetAll();
+
+    public Task Add(Transfer.Domain.Models.Transfer transfer);
 
 }

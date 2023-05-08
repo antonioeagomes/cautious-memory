@@ -12,6 +12,13 @@ public class TransferRepository : ITransferRepository
     {
         _context = context;
     }
+
+    public async Task Add(Domain.Models.Transfer transfer)
+    {
+        await _context.Transfers.AddAsync(transfer);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task<IEnumerable<Domain.Models.Transfer>> GetAll()
     {
 

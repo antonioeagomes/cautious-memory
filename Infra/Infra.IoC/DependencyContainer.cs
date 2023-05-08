@@ -41,7 +41,14 @@ public static class DependencyContainer
         services.AddTransient<ITransferService, TransferService>();
 
          // Domain Bus
-        services.AddTransient<IEventBus, EventBus>();
+        services.AddSingleton<IEventBus, EventBus>(sp => {
+            var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
+            return new EventBus(sp.GetService<IMediator>(), scopeFactory);
+        });
+
+        // subscription
+        services.AddTransient<TransferEventHandler>();
+
 
     }
 }
